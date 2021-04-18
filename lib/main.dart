@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube/src/ask.dart';
+import 'package:flutter_youtube/src/dice.dart';
+import 'package:flutter_youtube/src/quizzler.dart';
+import 'package:flutter_youtube/src/xylophone.dart';
 import 'package:get/get.dart';
 import 'src/home.dart';
 import 'src/i_am_poor.dart';
@@ -30,6 +34,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/rich", page: ()=>IamRich()),
         GetPage(name: "/poor", page: ()=>IamPoor()),
         GetPage(name: "/card", page: ()=>MiCard()),
+        GetPage(name: "/dice", page: ()=>Dice()),
+        GetPage(name: "/ask", page: ()=>Ask()),
+        GetPage(name: "/xylophone", page: ()=>Xylophone()),
+        GetPage(name: "/quizzler", page: ()=>Quizzler()),
       ],
     );
   }

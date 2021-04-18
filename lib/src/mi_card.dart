@@ -72,7 +72,7 @@ class MiCard extends StatelessWidget {
                   color: Colors.teal,
                 ),
                 title: Text(
-                  'homerjay@naver.com',
+                  'hoaaa@gmail.com',
                   style: TextStyle(
                     fontSize: 12,
                     fontFamily: 'ZenDots',
