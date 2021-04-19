@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'quiz_brain.dart';
+
 class Quizzler extends StatefulWidget {
   @override
   _QuizzlerState createState() => _QuizzlerState();
 }
 
 class _QuizzlerState extends State<Quizzler> {
-  List<Widget> scoreKeeper=[
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-  ];
+  QuizBrain quizBrain = QuizBrain();
 
-  List<String> questionList = [
-    '저는 잘생겼습니까?',
-    '당신은 남자입니까?',
-    '기혼자 이십니까?'
-  ];
+  List<Widget> scoreKeeper=[];
 
   int questionNumber = 0;
 
@@ -37,7 +26,7 @@ class _QuizzlerState extends State<Quizzler> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Center(
-                child: Text(questionList[questionNumber],
+                child: Text(quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
@@ -53,16 +42,24 @@ class _QuizzlerState extends State<Quizzler> {
               child: FlatButton(
                 onPressed: (){
                   setState(() {
-                    if(questionNumber >=3){
+                    bool currentAnswer = quizBrain.getQuestionAnswer(questionNumber);
+                    if(questionNumber ==2){
                       questionNumber = 0;
+                      scoreKeeper.add(
+                        currentAnswer == true ?
+                        Icon(Icons.check, color: Colors.green,):
+                        Icon(Icons.close, color: Colors.red,),
+                      );
                     }else{
-                      questionNumber++;
+                      if(scoreKeeper.length <3){
+                        scoreKeeper.add(
+                          currentAnswer == true ?
+                          Icon(Icons.check, color: Colors.green,):
+                          Icon(Icons.close, color: Colors.red,),
+                        );
+                      }
+                    quizBrain.netxQuestion();
                     }
-                  scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,)
-                  );
                   });
                 },
                 textColor: Colors.white,
@@ -80,7 +77,28 @@ class _QuizzlerState extends State<Quizzler> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: FlatButton(
-                onPressed: (){},
+                onPressed: (){
+                  setState(() {
+                    bool currentAnswer = quizBrain.getQuestionAnswer(questionNumber);
+                  if(questionNumber ==2 ){
+                    questionNumber =0;
+                    scoreKeeper.add(
+                      currentAnswer == true ?
+                      Icon(Icons.check, color: Colors.green,):
+                      Icon(Icons.close, color: Colors.red,),
+                    );
+                  }else{
+                    if(scoreKeeper.length <3){
+                  scoreKeeper.add(
+                    currentAnswer == false ?
+                    Icon(Icons.check, color: Colors.green,):
+                    Icon(Icons.close, color: Colors.red,),
+                  );
+                    }
+                    quizBrain.netxQuestion();
+                  }
+                  });
+                },
                 color: Colors.red,
                 child: Text('False',
                   style: TextStyle(
@@ -92,13 +110,13 @@ class _QuizzlerState extends State<Quizzler> {
             ),
           ),
           //TODO: add score
-          Row(
-            children: scoreKeeper,
+          Wrap(
+            children: [
+            Row(
+              children: scoreKeeper,
+            ),
+            ],
           )
-
-
-
-
         ],
       ),
     );
