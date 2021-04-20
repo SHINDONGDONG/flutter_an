@@ -8,6 +8,10 @@ class Quizzler extends StatefulWidget {
 }
 
 class _QuizzlerState extends State<Quizzler> {
+  void checkAnswer(bool userPickedAnswer){
+
+  }
+
   QuizBrain quizBrain = QuizBrain();
 
   List<Widget> scoreKeeper=[];

@@ -4,9 +4,9 @@ class QuizBrain{
   int _questNumber = 0;
 
   List<Question> _questionBank  = [
-    Question(q: '저는 잘생겼습니까?',a: true),
-    Question(q: '당신은 남자입니까?',a: true),
-    Question(q: '기혼자 이십니까?',a: false),
+    Question(questionText: '저는 잘생겼습니까?',questionAnswer: true),
+    Question( questionText: '당신은 남자입니까?',questionAnswer: true),
+    Question(questionText: '기혼자 이십니까?',questionAnswer: false),
 
   ];
 

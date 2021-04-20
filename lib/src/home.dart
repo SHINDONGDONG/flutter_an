@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/controller/navigation_controller.dart';
-import 'package:flutter_youtube/src/i_am_poor.dart';
-import 'package:flutter_youtube/src/iam_rich.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
@@ -21,6 +19,8 @@ class Home extends StatelessWidget {
               ElevatedButton(onPressed: () {Get.toNamed("/ask");}, child: Text('Ask'),),
               ElevatedButton(onPressed: () {Get.toNamed("/xylophone");}, child: Text('Xylophone'),),
               ElevatedButton(onPressed: () {Get.toNamed("/quizzler");}, child: Text('Quizzler'),),
+              ElevatedButton(onPressed: () {Get.toNamed("/destini");}, child: Text('Destini'),),
+              ElevatedButton(onPressed: () {Get.toNamed("/bmi");}, child: Text('BmiCal'),),
             ],
           ),
         ),

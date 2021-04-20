@@ -35,7 +35,7 @@ class _DiceState extends State<Dice> {
                         print(leftDiceNumber);
                       },
                       child: Image.asset(
-                  "assets/images/dice${leftDiceNumber}.png",
+                  "assets/images/dice$leftDiceNumber.png",
                 ),
                     )),
                 Expanded(
@@ -44,7 +44,7 @@ class _DiceState extends State<Dice> {
                           changeDiceFace();
                       },
                       child: Image.asset(
-                  "assets/images/dice${rightDiceNumber}.png",
+                  "assets/images/dice$rightDiceNumber.png",
                 ),
                     )),
               ],
