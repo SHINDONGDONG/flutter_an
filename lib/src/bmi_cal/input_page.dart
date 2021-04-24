@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constatns.dart';
+import 'components/constatns.dart';
 
 
 
