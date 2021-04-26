@@ -8,10 +8,8 @@ import 'components/constatns.dart';
 
 // ignore: must_be_immutable
 class Calculator extends StatelessWidget {
-  Calculator({this.resultBmi,this.resultText,  this.inter});
-  final String resultBmi;
-  final String resultText;
-  final String inter;
+  final CalculatorBrain car;
+  const Calculator({Key key, this.car}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +39,15 @@ class Calculator extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(resultBmi,
+                  Text(car.calculateBMI(),
                   style: kResultStyle,
                   ),
                   Text(
-                    resultBmi,
+                    car.calculateBMI(),
                     style: kBMITextStyle,
                   ),
                   Text(
-                    inter,
+                    car.getInter(),
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),

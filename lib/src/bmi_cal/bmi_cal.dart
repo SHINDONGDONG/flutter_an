@@ -229,7 +229,7 @@ class _BmiCalState extends State<BmiCal> {
           ),
           BottomButton(onTap:(){
             CalculatorBrain cal = CalculatorBrain(height: long,weight: weight);
-            Get.to(Calculator(resultText: cal.getResult(),resultBmi: cal.calculateBMI(),inter: cal.getInter(),),);},
+            Get.to(Calculator(car: cal));},
             buttonTitle: 'Calculator',),
         ],
       ),

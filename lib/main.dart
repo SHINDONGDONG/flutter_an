@@ -3,6 +3,8 @@ import 'package:flutter_youtube/src/ask.dart';
 import 'package:flutter_youtube/src/bmi_cal/calculator.dart';
 import 'package:flutter_youtube/src/dice.dart';
 import 'package:flutter_youtube/src/quizzler.dart';
+import 'package:flutter_youtube/src/weather/Weather.dart';
+import 'package:flutter_youtube/src/weather/loading_screen.dart';
 import 'package:flutter_youtube/src/xylophone.dart';
 import 'package:get/get.dart';
 import 'src/bmi_cal/bmi_cal.dart';
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/destini", page: ()=>Destini()),
         GetPage(name: "/bmi", page: ()=>BmiCal()),
         GetPage(name: "/calculator", page: ()=>Calculator(),),
+        GetPage(name: "/weather", page: ()=>LoadingScreen(),),
       ],
     );
   }
