@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/weather/Weather.dart';
+import 'package:flutter_youtube/src/weather/location_screen.dart';
+import 'package:flutter_youtube/src/weather/networking.dart';
 import 'package:get/get.dart';
 import 'location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'networking.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+
+const apiKey = 'bffdb561d5545e3b15c6b429319d20ed';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -11,33 +18,40 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  double latitude;
+  double longitude;
+
+  // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
   //get 메서드는 향후 response값을 갖는다. 즉, 다시 우리가 얻는 데이터를 유지시키려면
   //새로운 변수를 선언해야함
-  void getData() async {//api openweathermap 도메인, 사용할 api 버전/날씨
-    Uri uri = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
-      'q': 'Tokyo', //q 쿼리값
-      'appid': 'bffdb561d5545e3b15c6b429319d20ed' //내 id
-    });
-    http.Response response = await http.get(uri);//Response에 uri를 http.get하여 담아주기
-    if(response.statusCode ==200 ){ //response의 status가 200 (정상이면)
-     var jsonResponse = convert.jsonDecode(response.body); //jsonResponse에 json데이터를 디코더한다.
-      print(jsonResponse);
-    }
-  }
+ /* void getData() async {//api openweathermap 도메인, 사용할 api 버전/날씨
 
-  void getLocation() async {
-    Location location = Location();
-    await location.getCurrentLocation();
-    print(location.longitude);
-    print(location.latitude);
+    // http.Response response = await http.get(uri);//Response에 uri를 http.get하여 담아주기
+      var cityName = jsondecoder['name'];
+      var temp = jsondecoder['main']['temp'];
+      var condition = jsondecoder['weather'][0]['id'];
+      print('latitude : $latitude , longitude: $longitude');
+      print(jsondecoder);
+    }
+  }*/
+
+  
+  //로케이션 데이터를 받고 networkhelper에 인자를 넘겨준다.
+  //넘겨준 인자를 받은 netwrokhelper의 getdata를 다시 가져온다.
+  //이후 locationScreen으로 이동시켜줌
+  void getLocationData() async {
+    WeatherModel weatherModel = WeatherModel();
+    var weatherData = await weatherModel.getLocationWeather();
+    //locationScreen으로 이동시켜줄때 networkhelper에서 가져온 데이터를 인자로 넘겨줌
+    Get.to(()=>LocationScreen(locationWeather: weatherData,),);
+
   }
 
   @override
   void initState() {
     super.initState();
-    getLocation();
-    getData();
+    getLocationData();
   }
 
 
@@ -53,12 +67,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: ()=>Get.to(()=>Weather()),
-          child: Text('Get Location'),
-        ),
+      body: SpinKitDoubleBounce(
+        color: Colors.white,
+        size: 100.0,
       ),
     );
   }
 }
+
+
+

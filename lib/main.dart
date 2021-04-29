@@ -5,6 +5,7 @@ import 'package:flutter_youtube/src/dice.dart';
 import 'package:flutter_youtube/src/quizzler.dart';
 import 'package:flutter_youtube/src/weather/Weather.dart';
 import 'package:flutter_youtube/src/weather/loading_screen.dart';
+import 'package:flutter_youtube/src/weather/location_screen.dart';
 import 'package:flutter_youtube/src/xylophone.dart';
 import 'package:get/get.dart';
 import 'src/bmi_cal/bmi_cal.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/bmi", page: ()=>BmiCal()),
         GetPage(name: "/calculator", page: ()=>Calculator(),),
         GetPage(name: "/weather", page: ()=>LoadingScreen(),),
+        GetPage(name: "/location_screen", page: ()=>LocationScreen(),),
       ],
     );
   }
