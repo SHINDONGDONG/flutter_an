@@ -22,6 +22,7 @@ class Home extends StatelessWidget {
               ElevatedButton(onPressed: () {Get.toNamed("/destini");}, child: Text('Destini'),),
               ElevatedButton(onPressed: () {Get.toNamed("/bmi");}, child: Text('BmiCal'),),
               ElevatedButton(onPressed: () {Get.toNamed("/weather");}, child: Text('Weather'),),
+              ElevatedButton(onPressed: () {Get.toNamed("/coin");}, child: Text('Coin'),),
             ],
           ),
         ),

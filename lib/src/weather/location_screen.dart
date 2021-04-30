@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/weather/Weather.dart';
+import 'package:flutter_youtube/src/weather/city_screen.dart';
 import 'package:flutter_youtube/src/weather/constatns.dart';
+import 'package:get/get.dart';
 
 class LocationScreen extends StatefulWidget {
   //Loading화면에서 데이터를 넘겨받아온다 (생성자로)
@@ -31,6 +33,14 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUi(dynamic weatherData) {
     setState(() {
+      //받아온 날씨 데이터가 null일경우
+      if(weatherData == null){
+        temperature = 0;
+        weatherIcon = 'Error';
+        weatherMessage = 'Unable to get weather data';
+        cityName = '';
+        return;
+      }
     //double로 받은 온도를
     double temp = weatherData['main']['temp'];
     //인트로 선언한 temperature 에 넣어준다(toint)
@@ -78,7 +88,14 @@ class _LocationScreenState extends State<LocationScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        //city 아이콘을 클릭하면 원하는 city를 선택할 수 있다.
+                        var typeName = await Get.to(()=>CityScreen());
+                        if(typeName !=null ){
+                          var weatherData = await weather.getCityWeather(typeName);
+                          updateUi(weatherData);
+                        }
+                      },
                       icon: Icon(
                         Icons.location_city,
                         size: 50,

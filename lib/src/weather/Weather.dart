@@ -7,6 +7,20 @@ const apiKey = 'bffdb561d5545e3b15c6b429319d20ed';
 const openWeatherUrl1 ='api.openweathermap.org';
 const openWeatherUrl2 = '/data/2.5/weather';
 class WeatherModel {
+
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHelper networkHelper = NetworkHelper(
+        Uri.https(openWeatherUrl1,openWeatherUrl2,{
+          "q":'$cityName',
+          "units" : 'metric',     //units 를 metirc으로 추가해주면 섭씨로 변함
+          "appid": apiKey //내 id
+        }));
+
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
