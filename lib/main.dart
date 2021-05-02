@@ -3,6 +3,7 @@ import 'package:flutter_youtube/src/ask.dart';
 import 'package:flutter_youtube/src/bmi_cal/calculator.dart';
 import 'package:flutter_youtube/src/coinTiker/coin_main.dart';
 import 'package:flutter_youtube/src/dice.dart';
+import 'package:flutter_youtube/src/flash_chat/chat_main.dart';
 import 'package:flutter_youtube/src/quizzler.dart';
 import 'package:flutter_youtube/src/weather/Weather.dart';
 import 'package:flutter_youtube/src/weather/loading_screen.dart';
@@ -11,6 +12,9 @@ import 'package:flutter_youtube/src/xylophone.dart';
 import 'package:get/get.dart';
 import 'src/bmi_cal/bmi_cal.dart';
 import 'src/destini.dart';
+import 'src/flash_chat/login_screen.dart';
+import 'src/flash_chat/registration_screen.dart';
+import 'src/flash_chat/welcome_screen.dart';
 import 'src/home.dart';
 import 'src/i_am_poor.dart';
 import 'src/iam_rich.dart';
@@ -29,6 +33,7 @@ class MyApp extends StatelessWidget {
       theme:ThemeData.dark().copyWith(
         primaryColor: Color(0xFF0E1020), //앱바,탭바,툴바 등
         scaffoldBackgroundColor: Color(0xFF0E1020),
+        hintColor: Colors.black,
         //텍스트 띰으로 바디쪽 제어
         // textTheme: TextTheme(
         //   body1: TextStyle(color: Colors.white),
@@ -60,6 +65,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/weather", page: ()=>LoadingScreen(),),
         GetPage(name: "/location_screen", page: ()=>LocationScreen(),),
         GetPage(name: "/coin", page: ()=>CoinMain(),),
+        GetPage(name: "/chat_main", page: ()=>ChatMain(),),
+        GetPage(name: '/welcome_screen', page: () => WelcomeScreen()),
+        GetPage(name: WelcomeScreen.id, page: () => WelcomeScreen()),
+        GetPage(name: LoginScreen.id, page: () => LoginScreen()),
+        GetPage(name: RegistrationScreen.id, page: () => RegistrationScreen()),
       ],
     );
   }
