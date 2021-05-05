@@ -25,7 +25,6 @@ class _BmiCalState extends State<BmiCal> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(

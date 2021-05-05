@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/flash_chat/login_screen.dart';
 import 'package:flutter_youtube/src/flash_chat/registration_screen.dart';
 import 'package:get/get.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
+import 'compontens.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome';
@@ -31,7 +35,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     // controller.reverse(from: 1); //60~0까지의 티커를 가지게됨 (반대로됨)
     controller.addListener(() {   //리스너 (결과)에다가
       setState(() {});            //setstate를 넘겨 실시간 반영이 되게끔만든다.
-      print(animation.value);
     });
 
 /*    controller.addStatusListener((status) {  //status로 애니메이션의 시작,끝을 알수있음
@@ -56,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: animationTween.value,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -78,13 +81,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                         ),
                       ),
                     ),
-                    Text(
-                      'Flash Chat',
+
+                      //여러가지 텍스트 애니메이터가 많으니 찾아보자
+                      AnimatedTextKit(
+                        onTap: (){},
+                          animatedTexts:[
+                            TypewriterAnimatedText('Flash Chat',
+                            textStyle: TextStyle(color: Colors.grey,fontSize: 45),
+                            ),
+                          ]
+                      ),
+                      /*'Flash Chat',
                       style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
-                          fontSize: 50),
-                    ),
+                          fontSize: 50),*/
                   ],
                 ),
                 SizedBox(
@@ -109,28 +120,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   }
 }
 
-class ButtonWidget extends StatelessWidget {
-  ButtonWidget({this.color, this.title, this.onPressed});
-
-  final Color color;
-  final String title;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(30),
-        color: color,
-        child: MaterialButton(
-          onPressed: onPressed,
-          child: Text(title),
-          minWidth: 200,
-          height: 40,
-        ),
-      ),
-    );
-  }
-}

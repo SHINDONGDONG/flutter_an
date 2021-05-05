@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/weather/Weather.dart';
 import 'package:flutter_youtube/src/weather/location_screen.dart';
-import 'package:flutter_youtube/src/weather/networking.dart';
 import 'package:get/get.dart';
-import 'location.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
-import 'networking.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 

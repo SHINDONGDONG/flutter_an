@@ -4,8 +4,8 @@ import 'package:flutter_youtube/src/bmi_cal/calculator.dart';
 import 'package:flutter_youtube/src/coinTiker/coin_main.dart';
 import 'package:flutter_youtube/src/dice.dart';
 import 'package:flutter_youtube/src/flash_chat/chat_main.dart';
+import 'package:flutter_youtube/src/flash_chat/chat_screen.dart';
 import 'package:flutter_youtube/src/quizzler.dart';
-import 'package:flutter_youtube/src/weather/Weather.dart';
 import 'package:flutter_youtube/src/weather/loading_screen.dart';
 import 'package:flutter_youtube/src/weather/location_screen.dart';
 import 'package:flutter_youtube/src/xylophone.dart';
@@ -19,8 +19,11 @@ import 'src/home.dart';
 import 'src/i_am_poor.dart';
 import 'src/iam_rich.dart';
 import 'src/mi_card.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -70,6 +73,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: WelcomeScreen.id, page: () => WelcomeScreen()),
         GetPage(name: LoginScreen.id, page: () => LoginScreen()),
         GetPage(name: RegistrationScreen.id, page: () => RegistrationScreen()),
+        GetPage(name: ChatScreen.id, page: () => ChatScreen()),
       ],
     );
   }
