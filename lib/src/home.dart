@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/src/controller/navigation_controller.dart';
+import 'package:flutter_youtube/src/todoey/todoey_main.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
@@ -25,6 +26,7 @@ class Home extends StatelessWidget {
                 ElevatedButton(onPressed: () {Get.toNamed("/weather");}, child: Text('Weather'),),
                 ElevatedButton(onPressed: () {Get.toNamed("/coin");}, child: Text('Coin'),),
                 ElevatedButton(onPressed: () {Get.toNamed("/chat_main");}, child: Text('Flashchat'),),
+                ElevatedButton(onPressed: () {Get.toNamed(TodoeyMain.id);}, child: Text('Todoey'),),
               ],
             ),
           ),

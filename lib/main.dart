@@ -6,6 +6,7 @@ import 'package:flutter_youtube/src/dice.dart';
 import 'package:flutter_youtube/src/flash_chat/chat_main.dart';
 import 'package:flutter_youtube/src/flash_chat/chat_screen.dart';
 import 'package:flutter_youtube/src/quizzler.dart';
+import 'package:flutter_youtube/src/todoey/todoey_main.dart';
 import 'package:flutter_youtube/src/weather/loading_screen.dart';
 import 'package:flutter_youtube/src/weather/location_screen.dart';
 import 'package:flutter_youtube/src/xylophone.dart';
@@ -37,11 +38,12 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF0E1020), //앱바,탭바,툴바 등
         scaffoldBackgroundColor: Color(0xFF0E1020),
         hintColor: Colors.black,
+        unselectedWidgetColor: Colors.grey,
         //텍스트 띰으로 바디쪽 제어
         // textTheme: TextTheme(
         //   body1: TextStyle(color: Colors.white),
         // ),
-        accentColor: Colors.purple,
+        accentColor: Colors.lightBlueAccent,
 
       ),
         //스캐폴드가 들어간 위젯은 모두 블루그레이로 바꿔준다.
@@ -74,6 +76,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: LoginScreen.id, page: () => LoginScreen()),
         GetPage(name: RegistrationScreen.id, page: () => RegistrationScreen()),
         GetPage(name: ChatScreen.id, page: () => ChatScreen()),
+        GetPage(name: TodoeyMain.id, page: () => TodoeyMain()),
       ],
     );
   }
