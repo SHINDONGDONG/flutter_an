@@ -22,4 +22,14 @@ class TaskData extends ChangeNotifier{
     notifyListeners();
   }
 
+  void updateTask(Task task){
+    task.toggleDone();
+    notifyListeners(); //작업을 수신하는 업데이트
+  }
+
+  void deleteTask(Task task){
+    _tasks.remove(task);
+    notifyListeners();
+  }
+
 }
