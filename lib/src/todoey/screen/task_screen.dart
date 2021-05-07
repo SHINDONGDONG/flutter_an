@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube/src/todoey/models/task.dart';
+import 'package:flutter_youtube/src/todoey/models/task_data.dart';
 import 'package:flutter_youtube/src/todoey/widgets/task_list.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import 'add_task_screen.dart';
 
 class TaskScreen extends StatelessWidget {
+
   Widget buildBottomSheet(BuildContext context) {
     return Container(
       child: Center(
@@ -63,7 +68,7 @@ class TaskScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(
                     fontSize: 18,
                   ),
@@ -82,7 +87,14 @@ class TaskScreen extends StatelessWidget {
                   topLeft: Radius.circular(30),
                 ),
               ),
-              child: TaskList(),
+              child: Provider.of<TaskData>(context).taskCount == 0
+                  ? Center(
+                      child: Text(
+                        '일정을 등록해 주세요',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  : TaskList(),
             ),
           ),
         ],
